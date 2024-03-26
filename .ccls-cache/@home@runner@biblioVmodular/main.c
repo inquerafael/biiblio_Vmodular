@@ -126,8 +126,7 @@ int main(void) {
         switch (opcaoE) {
         case 1:
           Limpar();
-          emprestar(&emprestimos, &posicaoE, livros, quantLivros, usuarios,
-                    posicaoU);
+          emprestar(&emprestimos, &posicaoE);
           break;
         case 2:
           Limpar();

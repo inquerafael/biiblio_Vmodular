@@ -10,7 +10,7 @@ typedef struct {
   char *dataDevolucao;
 } Emprestimo;
 
-int emprestar(Emprestimo **emprestimos, int *quantEmprestimos;
+int emprestar(Emprestimo **emprestimos, int *quantEmprestimos);
 
 void imprimirHist(Emprestimo *emprestimos, int quantEmprestimos);
 
