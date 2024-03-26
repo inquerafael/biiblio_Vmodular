@@ -3,6 +3,7 @@
 #include "usuario.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int emprestar(Emprestimo **emprestimos, int *quantEmprestimos) {
   int tamahoAtual = *quantEmprestimos + 1;
@@ -13,17 +14,24 @@ int emprestar(Emprestimo **emprestimos, int *quantEmprestimos) {
     printf("Erro ao alocar memoria");
     return 0;
   }
+  time_t tempo;
+  tempo = time(NULL);
+  struct tm *tm = localtime(&tempo);
+  int data_atual =
+      (tm->tm_year + 1900) * 10000 + (tm->tm_mon + 1) * 100 + tm->tm_mday;
 
   printf("Digite o ID do livro: ");
   scanf("%d", &novoEmprestimo[*quantEmprestimos].livro.id);
   printf("Digite o ID do usuario: ");
   scanf("%d", &novoEmprestimo[*quantEmprestimos].usuario.id);
-  printf("Digite a data de emprestimo: ");
-  scanf("formato dd/mm/aa: %s",
-        novoEmprestimo[*quantEmprestimos].dataEmprestimo);
-  printf("Digite a data de devolucao: ");
-  scanf("formato dd/mm/aa: %s",
-        novoEmprestimo[*quantEmprestimos].dataDevolucao);
+
+  novoEmprestimo[*quantEmprestimos].dataEmprestimo = malloc(11 * sizeof(char));
+  sprintf(novoEmprestimo[*quantEmprestimos].dataEmprestimo, "%d% 02d% 02d",
+          tm->tm_mday - 1, tm->tm_mon + 1, tm->tm_year + 1900);
+
+  novoEmprestimo[*quantEmprestimos].dataDevolucao = malloc(11 * sizeof(char));
+  sprintf(novoEmprestimo[*quantEmprestimos].dataEmprestimo, "%d% 02d% 02d",
+          tm->tm_mday + 5, tm->tm_mon + 1, tm->tm_year + 1900);
 
   *emprestimos = novoEmprestimo;
   (*quantEmprestimos)++;
