@@ -1,6 +1,6 @@
-#include "../includes/emprestimo.h"
-#include "../includes/livro.h"
-#include "../includes/usuario.h"
+#include "../include/emprestimo.h"
+#include "../include/livro.h"
+#include "../include/usuario.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

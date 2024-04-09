@@ -1,6 +1,6 @@
-#include "emprestimo.h"
-#include "livro.h"
-#include "usuario.h"
+#include "include/emprestimo.h"
+#include "include/livro.h"
+#include "include/usuario.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
