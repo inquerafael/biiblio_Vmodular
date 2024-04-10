@@ -2,6 +2,7 @@
 #define emprestimo_h
 #include "livro.h"
 #include "usuario.h"
+#include <stdio.h>
 
 typedef struct {
   Livro livro;
@@ -13,5 +14,6 @@ typedef struct {
 int emprestar(Emprestimo **emprestimos, int *quantEmprestimos);
 
 void imprimirHist(Emprestimo *emprestimos, int quantEmprestimos);
+
 
 #endif // emprestimo_hs

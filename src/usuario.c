@@ -10,12 +10,14 @@ int cadastroUsuario(Usuario **usuarios, int *quantUsuarios) {
     printf("Erro ao alocar memoria");
     return 0;
   }
+
   printf("Digite o nome do usuario: ");
   scanf("%s", &novoUsuario[*quantUsuarios].nome);
   printf("Digite o numero do usuario: ");
   scanf("%s", &novoUsuario[*quantUsuarios].numero);
   novoUsuario[*quantUsuarios].id = *quantUsuarios + 1;
   novoUsuario[*quantUsuarios].flag = 1;
+  novoUsuario[*quantUsuarios].emprestimos = 0;
 
   *usuarios = novoUsuario;
   (*quantUsuarios)++;
@@ -68,5 +70,38 @@ void removeUsuario(Usuario **usuarios, int *quant) {
     printf("\nUsuario removido com sucesso!\n");
   } else {
     printf("\nUsuario nao encontrado");
+  }
+}
+
+void salvaUsuario(FILE *arquivo, Usuario **usuarios, int quantUsuarios) {
+  int qtd = quantUsuarios;
+  arquivo = fopen("usuarios.txt", "w");
+  if (arquivo == NULL) {
+    printf("Erro ao abrir o arquivo para escrita.\n");
+  } else {
+    printf("arquivo aberto");
+  }
+  for (int i = 0; i < qtd; i++) {
+    fprintf(arquivo, "%d %s %s %d\n", usuarios[i]->id, usuarios[i]->nome,
+            usuarios[i]->numero, usuarios[i]->emprestimos);
+  }
+  fclose(arquivo);
+
+  printf("Dados salvos com sucesso no arquivo usuarios.txt.\n");
+}
+
+void carregaUsuario(Usuario **usuarios, int *quantUsuarios) {
+  FILE *arquivo = fopen("usuarios.txt", "r");
+  if (arquivo) {
+    while (fscanf(arquivo, "%d %s %s %d", &usuarios[*quantUsuarios]->id,
+                  usuarios[*quantUsuarios]->nome,
+                  usuarios[*quantUsuarios]->numero,
+                  &usuarios[*quantUsuarios]->emprestimos) == 4) {
+      // Ler outros campos relevantes aqui, se necessário
+      (*quantUsuarios)++;
+    }
+    fclose(arquivo);
+  } else {
+    printf("Erro ao abrir o arquivo para leitura.\n");
   }
 }

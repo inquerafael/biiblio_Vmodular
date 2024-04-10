@@ -52,3 +52,4 @@ void imprimirHist(Emprestimo *emprestimos, int quantEmprestimos) {
     }
   }
 }
+
