@@ -11,7 +11,7 @@ int menu() {
   printf("1 - Area de Livros\n");
   printf("2 - Area do usuario\n");
   printf("3 - Area de emprestimos\n");
-  printf("4 - Arq. Usuario\n"); // teste
+  printf("4 - Arq. Usuario(teste_Arqui.)\n"); // teste
   printf("0 - Sair\n\n");
   printf("Digite a opcao: ");
   scanf("%d", &opcao);

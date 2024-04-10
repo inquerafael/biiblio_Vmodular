@@ -1,6 +1,6 @@
-#include "emprestimo.h"
-#include "livro.h"
-#include "usuario.h"
+#include "../include/emprestimo.h"
+#include "../include/livro.h"
+#include "../include/usuario.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,6 +11,7 @@ int menu() {
   printf("1 - Area de Livros\n");
   printf("2 - Area do usuario\n");
   printf("3 - Area de emprestimos\n");
+  printf("4 - Arq. Usuario(teste_Arqui.)\n"); // teste
   printf("0 - Sair\n\n");
   printf("Digite a opcao: ");
   scanf("%d", &opcao);
@@ -62,6 +63,7 @@ int main(void) {
   Livro *livros = NULL;
   Usuario *usuarios = NULL;
   Emprestimo *emprestimos = NULL;
+  FILE *emprest;
 
   int quantLivros = 0, posicaoU = 0, posicaoE = 0, opcao = -1, opcaoU = -1,
       opcaoL = -1, opcaoE = -1;
@@ -136,6 +138,10 @@ int main(void) {
           printf("Opcao invalida\n");
         }
       } while (opcaoE != 0);
+      break;
+    case 4:
+
+      salvaUsuario(emprest, &usuarios, posicaoU);
       break;
     default:
       printf("Opcao invalida\n");
