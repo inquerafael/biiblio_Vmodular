@@ -27,7 +27,7 @@ int cadastroLivro(Livro **livros, int *quantLivros) {
 void imprime(Livro *livros, int *quant) {
 
   if (*quant != 0) {
-    printf("\n==== ACERVO ====\n\n");
+    printf("\n==== ACERVOs ====\n\n");
     for (int i = 0; i < *quant; i++) { // percorre o vetor
       if (livros[i].flag != 0) {
         printf("ID: %d\n", livros[i].id);
@@ -56,11 +56,11 @@ int busca(Livro *livros, int quant) {
       indice = i;
       return indice;
       break;
-    } else {
-      printf("Titulo não encontrado\n");
     }
   }
-  return indice;
+  printf("Titulo não encontrado\n");
+  
+  return 0;
 }
 
 void removeLivro(Livro **livros, int *quant) {

@@ -12,9 +12,9 @@ int cadastroUsuario(Usuario **usuarios, int *quantUsuarios) {
   }
 
   printf("Digite o nome do usuario: ");
-  scanf("%s", &novoUsuario[*quantUsuarios].nome);
+  scanf("%s", novoUsuario[*quantUsuarios].nome);
   printf("Digite o numero do usuario: ");
-  scanf("%s", &novoUsuario[*quantUsuarios].numero);
+  scanf("%s", novoUsuario[*quantUsuarios].numero);
   novoUsuario[*quantUsuarios].id = *quantUsuarios + 1;
   novoUsuario[*quantUsuarios].flag = 1;
   novoUsuario[*quantUsuarios].emprestimos = 0;
@@ -26,12 +26,12 @@ int cadastroUsuario(Usuario **usuarios, int *quantUsuarios) {
 
 void imprimeU(Usuario *usuarios, int *quant) {
   if (*quant != 0) {
-    printf("\n==== ACERVO ====\n\n");
+    printf("\n==== USUARIOS C. ====\n\n");
     for (int i = 0; i < *quant; i++) {
       if (usuarios[i].flag != 0) {
         printf("ID: %d\n", usuarios[i].id);
-        printf("Nome: %s\n", &usuarios[i].nome);
-        printf("Numero: %s\n", &usuarios[i].numero);
+        printf("Nome: %s\n", usuarios[i].nome);
+        printf("Numero: %s\n", usuarios[i].numero);
         printf("----------------------\n");
       }
     }
@@ -51,8 +51,6 @@ int buscaU(Usuario *usuarios, int quant) {
       return indice;
       printf("acho!");
       break;
-    } else {
-      printf("usuario não encontrado\n");
     }
   }
   return indice;
