@@ -1,5 +1,5 @@
 compile = ["make", "-s"]
-run = "npm run ./main"
+run = "./main"
 entrypoint = "main.c"
 hidden = ["main", "main-debug", "**/*.o", "**/*.d", ".ccls-cache", "Makefile"]
 
