@@ -13,7 +13,7 @@ int cadastroLivro(Livro **livros, int *quantLivros) {
   printf("Digite o titulo do livro: ");
   scanf("%25s", novoLivro[*quantLivros].titulo); // limite de caracteres
   printf("Digite o autor do livro: ");
-  scanf("%25s", novoLivro[*quantLivros].autor); // limite de caracteres
+  scanf("%25s", novoLivro[*quantLivros].autor); // limite de caracteres.
   printf("Digite a quantidade de livros: ");
   scanf("%d", &novoLivro[*quantLivros].quanti);
   novoLivro[*quantLivros].id = *quantLivros + 1;
