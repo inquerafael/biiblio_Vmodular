@@ -7,13 +7,13 @@ int cadastroLivro(Livro **livros, int *quantLivros) {
   Livro *novoLivro = (Livro *)realloc(*livros, tamahoAtual * sizeof(Livro));
 
   if (novoLivro == NULL) {
-    printf("Erro ao alocar memoria");
+    printf("Erro ao alocar memoria para o novo livro.\n");
     return 0;
   }
   printf("Digite o titulo do livro: ");
-  scanf("%s", novoLivro[*quantLivros].titulo);
+  scanf("%25s", novoLivro[*quantLivros].titulo); // limite de caracteres
   printf("Digite o autor do livro: ");
-  scanf("%s", novoLivro[*quantLivros].autor);
+  scanf("%25s", novoLivro[*quantLivros].autor); // limite de caracteres
   printf("Digite a quantidade de livros: ");
   scanf("%d", &novoLivro[*quantLivros].quanti);
   novoLivro[*quantLivros].id = *quantLivros + 1;
@@ -27,7 +27,7 @@ int cadastroLivro(Livro **livros, int *quantLivros) {
 void imprime(Livro *livros, int *quant) {
 
   if (*quant != 0) {
-    printf("\n==== ACERVOs ====\n\n");
+    printf("\n==== ACERVO ====\n\n");
     for (int i = 0; i < *quant; i++) { // percorre o vetor
       if (livros[i].flag != 0) {
         printf("ID: %d\n", livros[i].id);
@@ -46,34 +46,36 @@ void imprime(Livro *livros, int *quant) {
 
 int busca(Livro *livros, int quant) {
 
-  int indice = -1, id = 0;
+  int id = 0;
 
   printf("\n==== BUSCAR ====\n\n");
   printf("ID do livro: ");
   scanf("%d", &id);
   for (int i = 0; i < quant; i++) {
     if (id == livros[i].id) {
-      indice = i;
-      return indice;
-      break;
+      printf("Livro encontrado no índice: %d\n", i);
+      return i;
     }
   }
-  printf("Titulo não encontrado\n");
-  
-  return 0;
+  printf("Titulo não encontrade\n");
+  return -1;
 }
 
 void removeLivro(Livro **livros, int *quant) {
 
   int indice = busca(*livros, *quant);
 
-  if (indice != -1 && livros[indice]->flag == 1) {
-    for (int i = indice; i < *quant - 1; i++) {
-      // move os livros para preencher o espaco vazio
-      livros[i]->flag = 0;
+  if (indice != -1) {
+    if (livros[indice]->flag == 1) {
+      for (int i = indice; i < *quant - 1; i++) {
+        // move os livros para preencher o espaco vazio
+        livros[i]->flag = 0;
+      }
+      (*quant)--; // decrementa o contador de livros
+      printf("\nLivro removido com sucesso!\n");
+    } else {
+      printf("\nLivro nao pode ser removido, situação (emprestado).\n");
     }
-    (*quant)--; // decrementa o contador de livros
-    printf("\nLivro removido com sucesso!\n");
   } else {
     printf("\nLivro nao encontrado.\n");
   }
